@@ -51,10 +51,10 @@ def sign_in(request):
 
 def sign_up(request):
     if request.method == 'POST':
-        email_ = request.POST['email']
-        mobile_ = request.POST['mobile']
-        password_ = request.POST['password']
-        confirm_password_ = request.POST['confirm_password']
+        email_ = request.POST.get('email')
+        mobile_ = request.POST.get('mobile')
+        password_ = request.POST.get('password')
+        confirm_password_ = request.POST.get('confirm_password')
 
         if not is_email_verified:
             print("Invalid email")
@@ -90,11 +90,11 @@ def sign_up(request):
 
         otp = random.randint(111111,999999)
 
-        subject = "Email Conformation mail | Workbook"
+        subject = "Email Conformation mail | ConceptHub"
         message = f"""
         Hello user,
 
-        Thank you for registering with Workbook.
+        Thank you for registering with ConceptHub.
 
         Your One-Time Password (OTP) for email verification is: {otp}
 
@@ -103,7 +103,7 @@ def sign_up(request):
         If you did not initiate this request, please ignore this email.
 
         Best regards,  
-        Workbook Team
+        ConceptHub Team
         """
         from_email = settings.EMAIL_HOST_USER
         recipient_list = [f"{email_}"]

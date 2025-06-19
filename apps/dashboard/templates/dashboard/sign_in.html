@@ -7,139 +7,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="{% static 'dashboard/assets/img/apple-icon.png' %}">
   <link rel="icon" type="image/png" href="{% static 'dashboard/assets/img/favicon.png' %}">
-  <title>Concept Hub - Login</title>
+  <title>Sign In | ConceptHub</title>
 
   <!-- Fonts and icons -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="{% static 'dashboard/assets/css/nucleo-icons.css' %}" rel="stylesheet" />
+  <link href="{% static 'dashboard/assets/css/nucleo-svg.css' %}" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
-  <!-- Argon CSS -->
+  <!-- Main CSS -->
   <link id="pagestyle" href="{% static 'dashboard/assets/css/argon-dashboard.css' %}" rel="stylesheet" />
-
-  <style>
-    body {
-      background-color: #f8f9fe;
-      font-family: 'Open Sans', sans-serif;
-    }
-
-    .card.card-plain {
-      border: none;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 1rem;
-    }
-
-    .card-header h4 {
-      font-size: 1.5rem;
-      color: #344767;
-    }
-
-    .form-control {
-      border-radius: 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    .form-check-label {
-      font-size: 0.875rem;
-    }
-
-    .btn-primary {
-      background-color: #5e72e4;
-      border: none;
-      transition: background-color 0.3s;
-    }
-
-    .btn-primary:hover {
-      background-color: #324cdd;
-    }
-
-    .card-footer a {
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .card-footer a:hover {
-      text-decoration: underline;
-    }
-
-    .bg-gradient-primary {
-      background-image: linear-gradient(310deg, #5e72e4, #825ee4);
-    }
-
-    .text-start span {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: 600;
-      color: #525f7f;
-    }
-
-    .mask {
-      position: absolute;
-      inset: 0;
-    }
-
-    .position-relative h4,
-    .position-relative p {
-      z-index: 2;
-    }
-  </style>
 </head>
 
-<body class="">
-  <div class="container position-sticky z-index-sticky top-0">
-    <div class="row">
-      <div class="col-12">
-        <!-- Optional top bar or navbar -->
-      </div>
-    </div>
-  </div>
-
+<body class="bg-gray-100" style="font-family: 'Inter', sans-serif;">
   <main class="main-content mt-0">
     <section>
       <div class="page-header min-vh-100">
         <div class="container">
           <div class="row">
+            <!-- Sign-in Form -->
             <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
-              <div class="card card-plain my-5">
+              <div class="card card-plain my-5 shadow-lg border-radius-xl">
                 <div class="card-header pb-0 text-start">
-                  <h4 class="font-weight-bolder">Sign In</h4>
-                  <p class="mb-0 text-muted">Enter your email and password to sign in</p>
+                  <h4 class="font-weight-bolder text-dark">Welcome to ConceptHub</h4>
+                  <p class="mb-0 text-muted">Sign in to access your dashboard</p>
                 </div>
                 <div class="card-body">
-                  <form role="form" method="post">
+                  <form method="post" role="form">
                     {% csrf_token %}
                     <div class="mb-3">
-                      <span>Email</span>
-                      <input type="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email" name="email">
+                      <label for="email" class="form-label text-dark fw-bold">Email</label>
+                      <input id="email" type="email" class="form-control form-control-lg" placeholder="Enter your email" name="email" required>
                     </div>
                     <div class="mb-3">
-                      <span>Password</span>
-                      <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" name="password">
+                      <label for="password" class="form-label text-dark fw-bold">Password</label>
+                      <input id="password" type="password" class="form-control form-control-lg" placeholder="Enter your password" name="password" required>
                     </div>
                     <div class="text-center">
-                      <button type="submit" class="btn btn-lg btn-primary w-100 mt-4">Sign in</button>
+                      <button type="submit" class="btn bg-gradient-primary w-100 btn-lg mt-4">Sign In</button>
                     </div>
                   </form>
                 </div>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="text-sm mt-3 mb-2">
-                    <a href="{% url 'forgot_password' %}" class="text-dark font-weight-bolder">Forgot Password?</a>
+                    <a href="{% url 'forgot_password' %}" class="text-dark font-weight-bold">Forgot your password?</a>
                   </p>
                   <p class="mb-4 text-sm mx-auto">
-                    Don't have an account?
-                    <a href="{% url 'sign_up' %}" class="text-primary text-gradient font-weight-bold">Sign up</a>
+                    Don’t have an account?
+                    <a href="{% url 'sign_up' %}" class="text-primary text-gradient font-weight-bold">Sign up for ConceptHub</a>
                   </p>
                 </div>
               </div>
             </div>
 
+            <!-- Right Panel -->
             <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
               <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
                 style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg'); background-size: cover;">
                 <span class="mask bg-gradient-primary opacity-6"></span>
-                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Attention is the new currency"</h4>
-                <p class="text-white position-relative">The more effortless the writing looks, the more effort the writer actually put into the process.</p>
+                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Share Ideas, Build Knowledge"</h4>
+                <p class="text-white position-relative">Collaborate, create, and grow with ConceptHub – your learning space.</p>
               </div>
             </div>
 
@@ -149,18 +76,14 @@
     </section>
   </main>
 
-  <!-- Core JS Files -->
+  <!-- JS -->
   <script src="{% static 'dashboard/assets/js/core/popper.min.js' %}"></script>
   <script src="{% static 'dashboard/assets/js/core/bootstrap.min.js' %}"></script>
   <script src="{% static 'dashboard/assets/js/plugins/perfect-scrollbar.min.js' %}"></script>
   <script src="{% static 'dashboard/assets/js/plugins/smooth-scrollbar.min.js' %}"></script>
   <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    if (navigator.platform.indexOf('Win') > -1 && document.querySelector('#sidenav-scrollbar')) {
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), { damping: '0.5' });
     }
   </script>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
